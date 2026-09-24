@@ -19,7 +19,7 @@ jobs:
       uses: grafana/run-k6-action@v1
       with:
         path: |
-          k6_teste.js
+          ./scripts/k6_teste.js
 
     - run: ls & mkdir report & mv index.html report
       
