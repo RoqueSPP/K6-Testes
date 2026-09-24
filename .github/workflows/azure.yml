@@ -1,34 +1,21 @@
-
+name: Azure CI/CD
 on:
   push:
     branches:
       - master
 
-env:
-  NODE_VERSION: '16.x'                
-
 jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
-    environment: production
     steps:
+    - name: step 01 checkout code
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ env.NODE_VERSION }}
-      uses: actions/setup-node@v2
+
+    - name: step 02 setup node
+    - uses: grafana/setup-k6-action@v1
+    - uses: grafana/run-k6-action@v1
       with:
-       node-version: ${{ env.NODE_VERSION }}
-    - name: Install newman
-      run: | 
-       npm install -g newman
-       npm install -g newman-reporter-htmlextra
-    - name: executar
-      run: newman run marvel.json -e Herois.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra
-    - name: diretorio
-      run: mkdir -p testResults
-    - name: Output the run Details
-      uses: actions/upload-artifact@v2
-      with: 
-       name: RunReports
-       path: testResults
+          path: |
+            ./teste.js
     
