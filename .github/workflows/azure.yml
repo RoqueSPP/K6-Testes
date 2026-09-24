@@ -3,7 +3,9 @@ on:
   push:
     branches:
       - master
-
+permissions:
+  contents: read
+  id-token: write
 jobs:
   build-and-deploy:
     name: Build and Deploy
@@ -28,3 +30,9 @@ jobs:
       with: 
         name: relatorio de testes de performance
         path: report
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+      github_token: ${{ secrets.GITHUB_TOKEN }}
+      publish_dir: ./report
