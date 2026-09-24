@@ -21,3 +21,10 @@ jobs:
         path: |
           ./k6_teste.js
 
+    - run: ls & mkdir report & mv index.html report
+      
+    - name: step 4 - upload artifact
+      uses: actions/upload-artifact@v3
+      with: 
+      name: relatorio de testes de performance
+      path: report
