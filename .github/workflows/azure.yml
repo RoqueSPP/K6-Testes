@@ -23,8 +23,8 @@ jobs:
 
     - run: mkdir report && mv index.html report
 
-    - name: step 4 - upload artifact
-    - uses: actions/upload-artifact@v7
-      with:
+    - name: step 4
+      uses: actions/upload-artifact@v7
+      with: 
         name: relatorio de testes de performance
         path: report
