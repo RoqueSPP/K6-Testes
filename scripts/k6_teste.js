@@ -1,6 +1,12 @@
 import http from 'k6/http';
 import { sleep } from 'k6';
+   import { htmlReport, htmlReportWithOptions } from "https://raw.githubusercontent.com/RoqueSPP/k6_report/refs/heads/master/k6-html-reporter.js";
 
+   export function handleSummary(data) {
+     return {
+       "relatorio.html": htmlReport(data),
+     };
+   }
 
 export const options = {
   iterations: 10,
