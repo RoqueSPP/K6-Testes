@@ -10,12 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: step 01
-    - uses: actions/checkout@v2
+      uses: actions/checkout@v2
 
     - name: step 02
-    - uses: grafana/setup-k6-action@v1
-    - uses: grafana/run-k6-action@v1
+      uses: grafana/setup-k6-action@v1
+
+    - name: step 03
+      uses: grafana/run-k6-action@v1
       with:
-       path: |
-            ./k6_teste.js
-    
+        path: |
+          ./k6_teste.js
+
