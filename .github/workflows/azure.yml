@@ -26,7 +26,7 @@ jobs:
         K6_WEB_DASHBOARD: "true"
         K6_WEB_DASHBOARD_EXPORT: "index.html"
 
-    - run: mkdir report
+    - run: mkdir report && mv index.html report
 
     - name: step 4
       uses: actions/upload-artifact@v7
