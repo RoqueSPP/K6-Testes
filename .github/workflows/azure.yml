@@ -19,5 +19,5 @@ jobs:
       uses: grafana/run-k6-action@v1
       with:
         path: |
-          ./k6_teste.js
+          k6_teste.js
 
