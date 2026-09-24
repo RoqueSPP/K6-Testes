@@ -54,9 +54,9 @@
   <h1>Relatório de Performance — k6</h1>
   <div class="meta">
     <span>🌍 Ambiente: <span class="pill">—</span></span>
-    <span>👥 1 usuários · 11s</span>
-    <span>⚡ 10 requisições · 0.9 req/s</span>
-    <span>🕐 24/09/2026 17:09:43</span>
+    <span>👥 1 usuários · 10s</span>
+    <span>⚡ 10 requisições · 1.0 req/s</span>
+    <span>🕐 24/09/2026 19:25:44</span>
   </div>
 </div>
 <div class="container">
@@ -64,15 +64,15 @@
     <div class="score-circle" style="background:#3ecf8e">EXCELENTE</div>
     <div class="score-info">
       <h2>Resumo do Teste</h2>
-      <p>Simulados <strong>1 usuários simultâneos</strong> durante <strong>11s</strong>. Taxa de sucesso: <strong>100.0%</strong>. ✅ O sistema se comportou muito bem sob carga.</p>
+      <p>Simulados <strong>1 usuários simultâneos</strong> durante <strong>10s</strong>. Taxa de sucesso: <strong>100.0%</strong>. ✅ O sistema se comportou muito bem sob carga.</p>
     </div>
   </div>
   <div class="grid">
     <div class="card"><div class="label">Total de requisições</div><div class="value">10</div><div class="hint">Chamadas HTTP feitas durante o teste</div></div>
     <div class="card"><div class="label">Taxa de sucesso</div><div class="value green">100.0%</div><div class="hint">Percentual de respostas 2xx</div></div>
-    <div class="card"><div class="label">Taxa Transferência</div><div class="value">0.9</div><div class="unit">requisições/segundo</div><div class="hint">Vazão média durante o teste</div></div>
-    <div class="card"><div class="label">Tempo médio</div><div class="value green">45 ms</div><div class="hint">Tempo típico de resposta</div></div>
-    <div class="card"><div class="label">P95 — pior caso real</div><div class="value green">45 ms</div><div class="hint">95% das requisições abaixo deste tempo</div></div>
+    <div class="card"><div class="label">Taxa Transferência</div><div class="value">1.0</div><div class="unit">requisições/segundo</div><div class="hint">Vazão média durante o teste</div></div>
+    <div class="card"><div class="label">Tempo médio</div><div class="value green">20 ms</div><div class="hint">Tempo típico de resposta</div></div>
+    <div class="card"><div class="label">P95 — pior caso real</div><div class="value green">20 ms</div><div class="hint">95% das requisições abaixo deste tempo</div></div>
     <div class="card"><div class="label">Usuários simultâneos</div><div class="value">1</div><div class="hint">Pico de VUs durante o teste</div></div>
   </div>
   <div class="section">
@@ -80,7 +80,7 @@
     <div class="timing-bars"><div class="tbar-row" title="Tempo até o servidor começar a responder">
       <span class="tbar-label">Aguardando servidor (TTFB)</span>
       <div class="tbar-track"><div class="tbar-fill" style="width:100%"></div></div>
-      <span class="tbar-val">45 ms</span>
+      <span class="tbar-val">20 ms</span>
     </div>
 <div class="tbar-row" title="Tempo para enviar os dados ao servidor">
       <span class="tbar-label">Enviando requisição</span>
@@ -95,7 +95,7 @@
 <div class="tbar-row" title="Duração completa da requisição">
       <span class="tbar-label">Tempo total</span>
       <div class="tbar-track"><div class="tbar-fill" style="width:100%"></div></div>
-      <span class="tbar-val">45 ms</span>
+      <span class="tbar-val">20 ms</span>
     </div></div>
   </div>
   
@@ -109,8 +109,8 @@
       var canvas = document.getElementById('chartDur');
       if (!canvas || !window.Chart) { setTimeout(initChart, 50); return; }
       var ctx = canvas.getContext('2d');
-      var labels = [1790269772744.6514,1790269772925.6514,1790269773105.6514,1790269773286.6514,1790269773466.6514,1790269773647.6514,1790269773827.6514,1790269774008.6514,1790269774189.6514,1790269774369.6514,1790269774550.6514,1790269774730.6514,1790269774911.6514,1790269775092.6514,1790269775272.6514,1790269775453.6514,1790269775633.6514,1790269775814.6514,1790269775994.6514,1790269776175.6514,1790269776356.6514,1790269776536.6514,1790269776717.6514,1790269776897.6514,1790269777078.6514,1790269777259.6514,1790269777439.6514,1790269777620.6514,1790269777800.6514,1790269777981.6514,1790269778161.6514,1790269778342.6514,1790269778523.6514,1790269778703.6514,1790269778884.6514,1790269779064.6514,1790269779245.6514,1790269779426.6514,1790269779606.6514,1790269779787.6514,1790269779967.6514,1790269780148.6514,1790269780328.6514,1790269780509.6514,1790269780690.6514,1790269780870.6514,1790269781051.6514,1790269781231.6514,1790269781412.6514,1790269781593.6514,1790269781773.6514,1790269781954.6514,1790269782134.6514,1790269782315.6514,1790269782495.6514,1790269782676.6514,1790269782857.6514,1790269783037.6514,1790269783218.6514,1790269783398.6514];
-      var values = [45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,45,50,44.943596,44.943596,46,49,44.943596,45,47,46,44.943596,47,48,44.943596,44.943596,48,47,44.943596,44.943596,44.943596,46,44.943596,45,49,44.943596,44.943596,47,47,44.943596,44.943596,49,46,44.943596,44.943596,50,44.943596,44.943596,45,49,44.943596,44.943596,46,48,44.943596,46];
+      var labels = [1790277933875.2693,1790277934050.2693,1790277934226.2693,1790277934401.2693,1790277934577.2693,1790277934752.2693,1790277934928.2693,1790277935103.2693,1790277935278.2693,1790277935454.2693,1790277935629.2693,1790277935805.2693,1790277935980.2693,1790277936155.2693,1790277936331.2693,1790277936506.2693,1790277936682.2693,1790277936857.2693,1790277937033.2693,1790277937208.2693,1790277937383.2693,1790277937559.2693,1790277937734.2693,1790277937910.2693,1790277938085.2693,1790277938260.2693,1790277938436.2693,1790277938611.2693,1790277938787.2693,1790277938962.2693,1790277939138.2693,1790277939313.2693,1790277939488.2693,1790277939664.2693,1790277939839.2693,1790277940015.2693,1790277940190.2693,1790277940366.2693,1790277940541.2693,1790277940716.2693,1790277940892.2693,1790277941067.2693,1790277941243.2693,1790277941418.2693,1790277941593.2693,1790277941769.2693,1790277941944.2693,1790277942120.2693,1790277942295.2693,1790277942471.2693,1790277942646.2693,1790277942821.2693,1790277942997.2693,1790277943172.2693,1790277943348.2693,1790277943523.2693,1790277943698.2693,1790277943874.2693,1790277944049.2693,1790277944225.2693];
+      var values = [20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,22,19.812231,20,21,21,19.812231,20,21,21,19.812231,21,21,20,19.812231,21,21,19.812231,19.812231,19.812231,20,19.812231,20,22,20,19.812231,21,21,19.812231,19.812231,22,20,19.812231,19.812231,22,19.812231,19.812231,20,22,19.812231,20,21,21,19.812231,20];
       var fmt = function(ts) {
         var d = new Date(ts);
         var z = function(n){ return String(n).padStart(2,'0'); };
@@ -174,11 +174,11 @@
     <h3>📊 Estatísticas detalhadas</h3>
     <table>
       <tr><th>Métrica</th><th>Valor</th><th>O que significa</th></tr>
-      <tr><td>Mínimo</td>       <td>45 ms</td><td>Resposta mais rápida registrada</td></tr>
-      <tr><td>Média</td>        <td>45 ms</td><td>Tempo típico de resposta</td></tr>
-      <tr><td>Máximo</td>       <td>45 ms</td><td>Pior tempo registrado</td></tr>
-      <tr><td>P90</td>          <td>45 ms</td>  <td>90% das requisições abaixo deste valor</td></tr>
-      <tr><td>P95</td>          <td>45 ms</td>  <td>Referência padrão para "pior caso aceitável"</td></tr>
+      <tr><td>Mínimo</td>       <td>20 ms</td><td>Resposta mais rápida registrada</td></tr>
+      <tr><td>Média</td>        <td>20 ms</td><td>Tempo típico de resposta</td></tr>
+      <tr><td>Máximo</td>       <td>20 ms</td><td>Pior tempo registrado</td></tr>
+      <tr><td>P90</td>          <td>20 ms</td>  <td>90% das requisições abaixo deste valor</td></tr>
+      <tr><td>P95</td>          <td>20 ms</td>  <td>Referência padrão para "pior caso aceitável"</td></tr>
       <tr><td>P99</td>          <td>0 ms</td>  <td>Apenas 1% das requisições foram mais lentas</td></tr>
       <tr><td>Taxa de falha</td><td>0.0%</td><td>Requisições que retornaram erro</td></tr>
     </table>
@@ -193,19 +193,19 @@
       <tr><th>Métrica</th><th>avg</th><th>min</th><th>med</th><th>max</th><th>p(90)</th><th>p(95)</th><th>rate</th><th>passes</th><th>O que significa</th></tr>
       <tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_blocked</td>
-          <td>19,56</td><td>0,00</td><td>0,00</td><td>195,56</td><td>19,56</td><td>107,56</td><td>—</td><td>—</td>
+          <td>14,12</td><td>0,00</td><td>0,00</td><td>141,16</td><td>14,12</td><td>77,64</td><td>—</td><td>—</td>
           <td style="font-size:.79rem;color:#6b7494">Tempo na fila antes de iniciar (limite de conexões simultâneas)</td>
         </tr><tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_connecting</td>
-          <td>4,45</td><td>0</td><td>0</td><td>44,50</td><td>4,45</td><td>24,47</td><td>—</td><td>—</td>
+          <td>1,94</td><td>0</td><td>0</td><td>19,36</td><td>1,94</td><td>10,65</td><td>—</td><td>—</td>
           <td style="font-size:.79rem;color:#6b7494">Tempo para criar a conexão TCP com o servidor</td>
         </tr><tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_duration</td>
-          <td>45,09</td><td>44,94</td><td>45,10</td><td>45,26</td><td>45,19</td><td>45,22</td><td>—</td><td>—</td>
+          <td>19,97</td><td>19,81</td><td>20,02</td><td>20,09</td><td>20,06</td><td>20,08</td><td>—</td><td>—</td>
           <td style="font-size:.79rem;color:#6b7494">Duração total — da conexão ao fim do download</td>
         </tr><tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_duration{expected_response:true}</td>
-          <td>45,09</td><td>44,94</td><td>45,10</td><td>45,26</td><td>45,19</td><td>45,22</td><td>—</td><td>—</td>
+          <td>19,97</td><td>19,81</td><td>20,02</td><td>20,09</td><td>20,06</td><td>20,08</td><td>—</td><td>—</td>
           <td style="font-size:.79rem;color:#6b7494">—</td>
         </tr><tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_failed</td>
@@ -213,27 +213,27 @@
           <td style="font-size:.79rem;color:#6b7494">Taxa de requisições que retornaram erro (non-2xx)</td>
         </tr><tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_receiving</td>
-          <td>0,09</td><td>0,06</td><td>0,08</td><td>0,17</td><td>0,13</td><td>0,15</td><td>—</td><td>—</td>
+          <td>0,10</td><td>0,05</td><td>0,08</td><td>0,22</td><td>0,18</td><td>0,20</td><td>—</td><td>—</td>
           <td style="font-size:.79rem;color:#6b7494">Tempo para baixar os dados da resposta</td>
         </tr><tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_sending</td>
-          <td>0,09</td><td>0,04</td><td>0,09</td><td>0,12</td><td>0,12</td><td>0,12</td><td>—</td><td>—</td>
+          <td>0,09</td><td>0,05</td><td>0,09</td><td>0,11</td><td>0,11</td><td>0,11</td><td>—</td><td>—</td>
           <td style="font-size:.79rem;color:#6b7494">Tempo para enviar os dados da requisição</td>
         </tr><tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_tls_handshaking</td>
-          <td>4,52</td><td>0</td><td>0</td><td>45,22</td><td>4,52</td><td>24,87</td><td>—</td><td>—</td>
+          <td>2,00</td><td>0</td><td>0</td><td>20,03</td><td>2,00</td><td>11,02</td><td>—</td><td>—</td>
           <td style="font-size:.79rem;color:#6b7494">Handshake SSL/TLS em conexões HTTPS</td>
         </tr><tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_waiting</td>
-          <td>44,91</td><td>44,75</td><td>44,90</td><td>45,09</td><td>45,03</td><td>45,06</td><td>—</td><td>—</td>
+          <td>19,79</td><td>19,65</td><td>19,79</td><td>19,94</td><td>19,89</td><td>19,91</td><td>—</td><td>—</td>
           <td style="font-size:.79rem;color:#6b7494">Tempo até a primeira resposta do servidor (TTFB)</td>
         </tr><tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_reqs</td>
-          <td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>0,94</td><td>—</td>
+          <td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>0,97</td><td>—</td>
           <td style="font-size:.79rem;color:#6b7494">Total de requisições HTTP realizadas durante o teste</td>
         </tr><tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">iteration_duration</td>
-          <td>1.065,39</td><td>1.045,41</td><td>1.045,91</td><td>1.241,36</td><td>1.065,79</td><td>1.153,58</td><td>—</td><td>—</td>
+          <td>1.034,93</td><td>1.020,29</td><td>1.020,90</td><td>1.161,90</td><td>1.035,21</td><td>1.098,56</td><td>—</td><td>—</td>
           <td style="font-size:.79rem;color:#6b7494">Tempo total de um ciclo completo do script</td>
         </tr>
     </table></div>
@@ -257,15 +257,15 @@
       <tr><th>Métrica</th><th>rate</th><th>O que significa</th></tr>
       <tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">data_received</td>
-          <td>3.511,81</td>
+          <td>3.621,45</td>
           <td style="font-size:.79rem;color:#6b7494">Volume total de dados recebidos do servidor</td>
         </tr><tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">data_sent</td>
-          <td>214,37</td>
+          <td>220,68</td>
           <td style="font-size:.79rem;color:#6b7494">Volume total de dados enviados ao servidor</td>
         </tr><tr>
           <td style="font-family:monospace;font-size:.79rem;color:#8899ff">iterations</td>
-          <td>0,94</td>
+          <td>0,97</td>
           <td style="font-size:.79rem;color:#6b7494">Número de iterações completas do script executadas</td>
         </tr>
     </table></div>
