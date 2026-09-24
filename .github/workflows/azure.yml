@@ -9,13 +9,13 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: step 01 checkout code
+    - name: step 01
     - uses: actions/checkout@v2
 
-    - name: step 02 setup node
+    - name: step 02
     - uses: grafana/setup-k6-action@v1
     - uses: grafana/run-k6-action@v1
       with:
-          path: |
-            ./teste.js
+       path: |
+            ./k6_teste.js
     
