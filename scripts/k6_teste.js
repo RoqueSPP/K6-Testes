@@ -4,7 +4,7 @@ import { sleep } from 'k6';
 
    export function handleSummary(data) {
      return {
-       "relatorio.html": htmlReport(data),
+       "index.html": htmlReport(data),
      };
    }
 
