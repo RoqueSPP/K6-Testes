@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Relatório de Performance — k6</title>
+  <style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'JetBrains Mono','Segoe UI',system-ui,monospace;background:#0d0f14;color:#e2e6f0;line-height:1.6}
+  .header{background:linear-gradient(135deg,#13161e 0%,#1b1f2b 100%);border-bottom:1px solid #252a38;color:#e2e6f0;padding:2rem 2.5rem}
+  .header h1{font-size:1.5rem;font-weight:700;margin-bottom:.4rem;letter-spacing:-.3px}
+  .header .meta{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;font-size:.86rem;color:#6b7494;margin-top:.5rem}
+  .pill{background:rgba(91,110,245,.2);border-radius:20px;padding:1px 10px;font-weight:600;color:#8899ff}
+  .container{max-width:1150px;margin:0 auto;padding:1.5rem}
+  .score-bar{background:#13161e;border-radius:12px;border:1px solid #252a38;padding:1.5rem 2rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+  .score-circle{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem;color:#0d0f14;flex-shrink:0;text-align:center;line-height:1.3}
+  .score-info h2{font-size:1.05rem;margin-bottom:.3rem;color:#e2e6f0}
+  .score-info p{color:#6b7494;font-size:.88rem;max-width:640px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(95px,1fr));gap:1rem;margin-bottom:1.5rem}
+  .card{background:#13161e;border-radius:12px;border:1px solid #252a38;padding:1.25rem 1.5rem}
+  .card .label{font-size:.74rem;text-transform:uppercase;letter-spacing:.07em;color:#6b7494;margin-bottom:.3rem}
+  .card .value{font-size:1.9rem;font-weight:700;line-height:1.1;color:#e2e6f0}
+  .card .unit{font-size:.8rem;color:#6b7494;margin-top:.1rem}
+  .card .hint{font-size:.74rem;color:#6b7494;margin-top:.4rem;border-top:1px solid #252a38;padding-top:.4rem}
+  .green{color:#3ecf8e}.red{color:#f56565}.amber{color:#f6c90e}
+  .section{background:#13161e;border-radius:12px;border:1px solid #252a38;padding:1.5rem;margin-bottom:1.5rem}
+  .section h3{font-size:.93rem;font-weight:600;margin-bottom:1rem;color:#e2e6f0;border-bottom:1px solid #252a38;padding-bottom:.5rem}
+  .timing-bars{display:grid;gap:.55rem}
+  .tbar-row{display:flex;align-items:center;gap:.75rem;font-size:.84rem}
+  .tbar-label{width:220px;color:#6b7494;flex-shrink:0}
+  .tbar-track{flex:1;height:9px;background:#1b1f2b;border-radius:6px;overflow:hidden}
+  .tbar-fill{height:100%;border-radius:6px;background:#5b6ef5}
+  .tbar-val{width:68px;text-align:right;font-weight:600;color:#e2e6f0}
+  .glossary{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:.75rem}
+  .gitem{background:#1b1f2b;border-radius:8px;padding:.75rem 1rem;border-left:3px solid #5b6ef5}
+  .gitem .gkey{font-family:monospace;font-size:.79rem;font-weight:600;color:#8899ff;margin-bottom:2px}
+  .gitem .gval{font-size:.79rem;color:#6b7494;line-height:1.4}
+  .checks-bar{display:flex;height:10px;border-radius:6px;overflow:hidden;margin:.5rem 0}
+  .checks-pass{background:#3ecf8e}.checks-fail{background:#f56565}
+  .footer{text-align:center;padding:1.5rem;color:#6b7494;font-size:.78rem;border-top:1px solid #252a38}
+  table{width:100%;border-collapse:collapse;font-size:.87rem}
+  th{text-align:left;padding:8px 12px;background:#1b1f2b;color:#6b7494;font-weight:600;border-bottom:1px solid #252a38;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+  td{padding:8px 12px;border-bottom:1px solid #1b1f2b;color:#e2e6f0}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:#1b1f2b}
+  .chart-wrap{position:relative;width:100%;height:220px}
+  .chart-wrap canvas{width:100%!important;height:100%!important}
+  @media(max-width:600px){.header{padding:1.5rem 1rem}.score-bar{flex-direction:column}.card .value{font-size:1.5rem}}
+</style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="header">
+  <h1>Relatório de Performance — k6</h1>
+  <div class="meta">
+    <span>🌍 Ambiente: <span class="pill">—</span></span>
+    <span>👥 1 usuários · 10s</span>
+    <span>⚡ 10 requisições · 1.0 req/s</span>
+    <span>🕐 25/09/2026 13:29:51</span>
+  </div>
+</div>
+<div class="container">
+  <div class="score-bar">
+    <div class="score-circle" style="background:#3ecf8e">EXCELENTE</div>
+    <div class="score-info">
+      <h2>Resumo do Teste</h2>
+      <p>Simulados <strong>1 usuários simultâneos</strong> durante <strong>10s</strong>. Taxa de sucesso: <strong>100.0%</strong>. ✅ O sistema se comportou muito bem sob carga.</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="label">Total de requisições</div><div class="value">10</div><div class="hint">Chamadas HTTP feitas durante o teste</div></div>
+    <div class="card"><div class="label">Taxa de sucesso</div><div class="value green">100.0%</div><div class="hint">Percentual de respostas 2xx</div></div>
+    <div class="card"><div class="label">Taxa Transferência</div><div class="value">1.0</div><div class="unit">requisições/segundo</div><div class="hint">Vazão média durante o teste</div></div>
+    <div class="card"><div class="label">Tempo médio</div><div class="value green">12 ms</div><div class="hint">Tempo típico de resposta</div></div>
+    <div class="card"><div class="label">P95 — pior caso real</div><div class="value green">12 ms</div><div class="hint">95% das requisições abaixo deste tempo</div></div>
+    <div class="card"><div class="label">Usuários simultâneos</div><div class="value">1</div><div class="hint">Pico de VUs durante o teste</div></div>
+  </div>
+  <div class="section">
+    <h3>⏱️ Detalhamento dos tempos (média)</h3>
+    <div class="timing-bars"><div class="tbar-row" title="Tempo até o servidor começar a responder">
+      <span class="tbar-label">Aguardando servidor (TTFB)</span>
+      <div class="tbar-track"><div class="tbar-fill" style="width:92%"></div></div>
+      <span class="tbar-val">11 ms</span>
+    </div>
+<div class="tbar-row" title="Tempo para enviar os dados ao servidor">
+      <span class="tbar-label">Enviando requisição</span>
+      <div class="tbar-track"><div class="tbar-fill" style="width:1%"></div></div>
+      <span class="tbar-val">0 ms</span>
+    </div>
+<div class="tbar-row" title="Tempo para baixar a resposta completa">
+      <span class="tbar-label">Recebendo resposta</span>
+      <div class="tbar-track"><div class="tbar-fill" style="width:1%"></div></div>
+      <span class="tbar-val">0 ms</span>
+    </div>
+<div class="tbar-row" title="Duração completa da requisição">
+      <span class="tbar-label">Tempo total</span>
+      <div class="tbar-track"><div class="tbar-fill" style="width:100%"></div></div>
+      <span class="tbar-val">12 ms</span>
+    </div></div>
+  </div>
+  
+  <div class="section">
+    <h3>📈 Tempo de resposta ao longo do teste</h3>
+    <div class="chart-wrap"><canvas id="chartDur"></canvas></div>
+  </div>
+  <script>
+  (function() {
+    function initChart() {
+      var canvas = document.getElementById('chartDur');
+      if (!canvas || !window.Chart) { setTimeout(initChart, 50); return; }
+      var ctx = canvas.getContext('2d');
+      var labels = [1790342981655.4277,1790342981829.4277,1790342982002.4277,1790342982176.4277,1790342982350.4277,1790342982523.4277,1790342982697.4277,1790342982871.4277,1790342983045.4277,1790342983218.4277,1790342983392.4277,1790342983566.4277,1790342983739.4277,1790342983913.4277,1790342984087.4277,1790342984260.4277,1790342984434.4277,1790342984608.4277,1790342984781.4277,1790342984955.4277,1790342985129.4277,1790342985302.4277,1790342985476.4277,1790342985650.4277,1790342985824.4277,1790342985997.4277,1790342986171.4277,1790342986345.4277,1790342986518.4277,1790342986692.4277,1790342986866.4277,1790342987039.4277,1790342987213.4277,1790342987387.4277,1790342987560.4277,1790342987734.4277,1790342987908.4277,1790342988081.4277,1790342988255.4277,1790342988429.4277,1790342988603.4277,1790342988776.4277,1790342988950.4277,1790342989124.4277,1790342989297.4277,1790342989471.4277,1790342989645.4277,1790342989818.4277,1790342989992.4277,1790342990166.4277,1790342990339.4277,1790342990513.4277,1790342990687.4277,1790342990860.4277,1790342991034.4277,1790342991208.4277,1790342991382.4277,1790342991555.4277,1790342991729.4277,1790342991903.4277];
+      var values = [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,11.451115,11.451115,12,13,11.451115,12,12,12,11.451115,12,12,12,11.451115,13,12,11.451115,11.451115,11.451115,12,11.451115,12,13,11.451115,11.451115,12,12,11.451115,11.451115,13,12,11.451115,11.451115,13,11.451115,11.451115,12,13,11.451115,11.451115,12,13,11.451115,12];
+      var fmt = function(ts) {
+        var d = new Date(ts);
+        var z = function(n){ return String(n).padStart(2,'0'); };
+        return z(d.getHours())+':'+z(d.getMinutes())+':'+z(d.getSeconds());
+      };
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: values,
+            borderColor: '#5b6ef5',
+            backgroundColor: 'rgba(91,110,245,0.10)',
+            borderWidth: 2,
+            pointRadius: 0,
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: {
+            backgroundColor: '#1b1f2b',
+            borderColor: '#252a38',
+            borderWidth: 1,
+            titleColor: '#6b7494',
+            bodyColor: '#e2e6f0',
+            callbacks: {
+              title: function(items) { return fmt(items[0].label); },
+              label: function(item) { return item.raw + ' ms'; }
+            }
+          }},
+          scales: {
+            x: {
+              type: 'linear',
+              ticks: {
+                maxTicksLimit: 6,
+                callback: function(v) { return fmt(v); },
+                color: '#6b7494', font: { size: 11 }
+              },
+              grid: { color: '#1b1f2b' },
+              border: { display: false }
+            },
+            y: {
+              min: 0,
+              max: 100,
+              title: { display: true, text: 'ms', color: '#6b7494', font: { size: 11 } },
+              ticks: { color: '#6b7494', font: { size: 11 } },
+              grid: { color: '#1b1f2b' },
+              border: { display: false }
+            }
+          }
+        }
+      });
+    }
+    initChart();
+  })();
+  </script>
+  <div class="section">
+    <h3>📊 Estatísticas detalhadas</h3>
+    <table>
+      <tr><th>Métrica</th><th>Valor</th><th>O que significa</th></tr>
+      <tr><td>Mínimo</td>       <td>11 ms</td><td>Resposta mais rápida registrada</td></tr>
+      <tr><td>Média</td>        <td>12 ms</td><td>Tempo típico de resposta</td></tr>
+      <tr><td>Máximo</td>       <td>12 ms</td><td>Pior tempo registrado</td></tr>
+      <tr><td>P90</td>          <td>12 ms</td>  <td>90% das requisições abaixo deste valor</td></tr>
+      <tr><td>P95</td>          <td>12 ms</td>  <td>Referência padrão para "pior caso aceitável"</td></tr>
+      <tr><td>P99</td>          <td>0 ms</td>  <td>Apenas 1% das requisições foram mais lentas</td></tr>
+      <tr><td>Taxa de falha</td><td>0.0%</td><td>Requisições que retornaram erro</td></tr>
+    </table>
+  </div>
+  
+  
+  <div class="section">
+    <h3>🔢 Todas as métricas</h3>
+    <h4 style="font-size:.82rem;color:#6b7494;margin:1rem 0 .5rem;text-transform:uppercase;letter-spacing:.05em">Requisições HTTP</h4>
+    <div style="overflow-x:auto;margin-bottom:1rem">
+    <table>
+      <tr><th>Métrica</th><th>avg</th><th>min</th><th>med</th><th>max</th><th>p(90)</th><th>p(95)</th><th>rate</th><th>passes</th><th>O que significa</th></tr>
+      <tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_blocked</td>
+          <td>12,27</td><td>0,00</td><td>0,00</td><td>122,74</td><td>12,27</td><td>67,50</td><td>—</td><td>—</td>
+          <td style="font-size:.79rem;color:#6b7494">Tempo na fila antes de iniciar (limite de conexões simultâneas)</td>
+        </tr><tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_connecting</td>
+          <td>1,07</td><td>0</td><td>0</td><td>10,69</td><td>1,07</td><td>5,88</td><td>—</td><td>—</td>
+          <td style="font-size:.79rem;color:#6b7494">Tempo para criar a conexão TCP com o servidor</td>
+        </tr><tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_duration</td>
+          <td>11,71</td><td>11,45</td><td>11,70</td><td>12,04</td><td>11,92</td><td>11,98</td><td>—</td><td>—</td>
+          <td style="font-size:.79rem;color:#6b7494">Duração total — da conexão ao fim do download</td>
+        </tr><tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_duration{expected_response:true}</td>
+          <td>11,71</td><td>11,45</td><td>11,70</td><td>12,04</td><td>11,92</td><td>11,98</td><td>—</td><td>—</td>
+          <td style="font-size:.79rem;color:#6b7494">—</td>
+        </tr><tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_failed</td>
+          <td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>0</td><td>0</td>
+          <td style="font-size:.79rem;color:#6b7494">Taxa de requisições que retornaram erro (non-2xx)</td>
+        </tr><tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_receiving</td>
+          <td>0,12</td><td>0,08</td><td>0,09</td><td>0,25</td><td>0,24</td><td>0,25</td><td>—</td><td>—</td>
+          <td style="font-size:.79rem;color:#6b7494">Tempo para baixar os dados da resposta</td>
+        </tr><tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_sending</td>
+          <td>0,10</td><td>0,04</td><td>0,10</td><td>0,13</td><td>0,12</td><td>0,12</td><td>—</td><td>—</td>
+          <td style="font-size:.79rem;color:#6b7494">Tempo para enviar os dados da requisição</td>
+        </tr><tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_tls_handshaking</td>
+          <td>1,18</td><td>0</td><td>0</td><td>11,76</td><td>1,18</td><td>6,47</td><td>—</td><td>—</td>
+          <td style="font-size:.79rem;color:#6b7494">Handshake SSL/TLS em conexões HTTPS</td>
+        </tr><tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_req_waiting</td>
+          <td>11,49</td><td>11,32</td><td>11,50</td><td>11,84</td><td>11,58</td><td>11,71</td><td>—</td><td>—</td>
+          <td style="font-size:.79rem;color:#6b7494">Tempo até a primeira resposta do servidor (TTFB)</td>
+        </tr><tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">http_reqs</td>
+          <td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>0,98</td><td>—</td>
+          <td style="font-size:.79rem;color:#6b7494">Total de requisições HTTP realizadas durante o teste</td>
+        </tr><tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">iteration_duration</td>
+          <td>1.024,71</td><td>1.011,79</td><td>1.012,59</td><td>1.134,68</td><td>1.025,19</td><td>1.079,93</td><td>—</td><td>—</td>
+          <td style="font-size:.79rem;color:#6b7494">Tempo total de um ciclo completo do script</td>
+        </tr>
+    </table></div>
+    <h4 style="font-size:.82rem;color:#6b7494;margin:1rem 0 .5rem;text-transform:uppercase;letter-spacing:.05em">Usuários virtuais</h4>
+    <div style="overflow-x:auto;margin-bottom:1rem">
+    <table>
+      <tr><th>Métrica</th><th>min</th><th>max</th><th>O que significa</th></tr>
+      <tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">vus</td>
+          <td>1</td><td>1</td>
+          <td style="font-size:.79rem;color:#6b7494">Virtual Users — usuários simultâneos ativos no momento</td>
+        </tr><tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">vus_max</td>
+          <td>1</td><td>1</td>
+          <td style="font-size:.79rem;color:#6b7494">Pico máximo de usuários virtuais durante o teste</td>
+        </tr>
+    </table></div>
+    <h4 style="font-size:.82rem;color:#6b7494;margin:1rem 0 .5rem;text-transform:uppercase;letter-spacing:.05em">Outras métricas</h4>
+    <div style="overflow-x:auto;margin-bottom:1rem">
+    <table>
+      <tr><th>Métrica</th><th>rate</th><th>O que significa</th></tr>
+      <tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">data_received</td>
+          <td>3.650,43</td>
+          <td style="font-size:.79rem;color:#6b7494">Volume total de dados recebidos do servidor</td>
+        </tr><tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">data_sent</td>
+          <td>222,88</td>
+          <td style="font-size:.79rem;color:#6b7494">Volume total de dados enviados ao servidor</td>
+        </tr><tr>
+          <td style="font-family:monospace;font-size:.79rem;color:#8899ff">iterations</td>
+          <td>0,98</td>
+          <td style="font-size:.79rem;color:#6b7494">Número de iterações completas do script executadas</td>
+        </tr>
+    </table></div>
+  </div>
+  <div class="section">
+    <h3>📖 Glossário</h3>
+    <div class="glossary"><div class="gitem"><div class="gkey">http_req_blocked</div><div class="gval">Tempo na fila antes de iniciar (limite de conexões simultâneas)</div></div>
+<div class="gitem"><div class="gkey">http_req_connecting</div><div class="gval">Tempo para criar a conexão TCP com o servidor</div></div>
+<div class="gitem"><div class="gkey">http_req_duration</div><div class="gval">Duração total — da conexão ao fim do download</div></div>
+<div class="gitem"><div class="gkey">http_req_receiving</div><div class="gval">Tempo para baixar os dados da resposta</div></div>
+<div class="gitem"><div class="gkey">http_req_sending</div><div class="gval">Tempo para enviar os dados da requisição</div></div>
+<div class="gitem"><div class="gkey">http_req_tls_handshaking</div><div class="gval">Handshake SSL/TLS em conexões HTTPS</div></div>
+<div class="gitem"><div class="gkey">http_req_waiting</div><div class="gval">Tempo até a primeira resposta do servidor (TTFB)</div></div>
+<div class="gitem"><div class="gkey">iteration_duration</div><div class="gval">Tempo total de um ciclo completo do script</div></div>
+<div class="gitem"><div class="gkey">vus</div><div class="gval">Virtual Users — usuários simultâneos simulados</div></div>
+<div class="gitem"><div class="gkey">p95</div><div class="gval">Percentil 95 — 95% das respostas foram mais rápidas que este valor</div></div></div>
+  </div>
+</div>
+<div class="footer">Gerado por k6-html-reporter &bull; 25/09/2026</div>
+</body>
+</html>
